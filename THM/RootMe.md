@@ -1,6 +1,6 @@
 Room: https://tryhackme.com/room/rrootme
 
-#ENUMERATION
+# ENUMERATION
 
 After we deployed the VM, we start with an NMAP and a Dirb to the machine
 
@@ -30,7 +30,7 @@ If we try to upload a php we get the not successful upload.
 
 ![image](https://user-images.githubusercontent.com/71237545/115132063-d4f57b80-9fca-11eb-9bbb-be9e8a1c79e6.png)
 
-#Getting the reverse Shell
+# Getting the reverse Shell
 
 Here is when we jump to BurpSuite to check any filter.
 Under the BurpSuite we can check the filters for it.
@@ -44,7 +44,7 @@ Success ! Now we open our listener on the port we set on our payload. And we ope
 ![image](https://user-images.githubusercontent.com/71237545/115132080-f6566780-9fca-11eb-8708-5ab9fc111a7c.png)
 ![image](https://user-images.githubusercontent.com/71237545/115132082-fc4c4880-9fca-11eb-8e0c-6d10d6ca2e21.png)
 
-#Looking for interesting files
+# Looking for interesting files
 
 Now that we're in, we set our shell stable.
 ```python -c 'import pty;pty.spawn("/bin/bash")'```
@@ -67,7 +67,7 @@ From linpeas.sh we can get the following interesting SUID
 
 ![image](https://user-images.githubusercontent.com/71237545/115132094-09693780-9fcb-11eb-9656-41b33055f0d2.png)
 
-#Going for the Root!
+# Going for the Root!
 
 With this we can answer the first question of the last task.
 From this I lookup on gtfobins and found the following.
