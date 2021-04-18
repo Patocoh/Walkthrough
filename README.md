@@ -1,2 +1,2 @@
-# Walkthrough-
+# Walkthrough
 Walkthrough for different platforms.
