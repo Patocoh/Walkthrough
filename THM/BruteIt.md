@@ -2,7 +2,7 @@ Room: https://tryhackme.com/room/bruteit
 
 We start with a NMAP to the IP and in case it has any http protocol, we go for the web enumeration
 
-#Reconnaissance
+# Reconnaissance
 
 NMAP:
 
@@ -72,7 +72,7 @@ This will ask for the passphrase for the key… and then !
 
 ![image](https://user-images.githubusercontent.com/71237545/115155442-fe0b2000-a04d-11eb-8550-cc85c4ad21c2.png)
 
-#Escalation
+# Escalation
 
 As soon as we enter we can check the files and get the last answer for task 3.
 User.txt
