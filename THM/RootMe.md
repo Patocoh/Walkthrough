@@ -13,6 +13,7 @@ NMAP output:
 Dirb output:
 
 ```dirb http://10.10.131.189/ /usr/share/wordlists/dirb/common.txt```
+
 ![image](https://user-images.githubusercontent.com/71237545/115132052-c313d880-9fca-11eb-8a38-ba1bfa469d3b.png)
 
 From this we start enumerating the site manually.
@@ -34,10 +35,12 @@ If we try to upload a php we get the not successful upload.
 Here is when we jump to BurpSuite to check any filter.
 Under the BurpSuite we can check the filters for it.
 Checking the filter we change the content and the type of it to set it as an image.
+
 ![image](https://user-images.githubusercontent.com/71237545/115132064-d9ba2f80-9fca-11eb-895e-dbf4c1980b82.png)
 ![image](https://user-images.githubusercontent.com/71237545/115132077-f3f40d80-9fca-11eb-8475-d8aa803c5ae6.png)
 
 Success ! Now we open our listener on the port we set on our payload. And we open it via the /uploads directory.
+
 ![image](https://user-images.githubusercontent.com/71237545/115132080-f6566780-9fca-11eb-8708-5ab9fc111a7c.png)
 ![image](https://user-images.githubusercontent.com/71237545/115132082-fc4c4880-9fca-11eb-8e0c-6d10d6ca2e21.png)
 
