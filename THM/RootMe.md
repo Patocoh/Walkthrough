@@ -1,6 +1,6 @@
 Room: https://tryhackme.com/room/rrootme
 
-# ENUMERATION
+# RECONNAISSANCE
 
 After we deployed the VM, we start with an NMAP and a Dirb to the machine
 
