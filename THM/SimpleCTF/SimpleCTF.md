@@ -22,7 +22,8 @@ Content of Mitch.txt:
 We start looking through the site and I found the login of the CMS at simple.thm/simple/admin/login.php  
 ![image](https://user-images.githubusercontent.com/71237545/117580582-91bc9300-b0c6-11eb-8305-72105d936a54.png)  
 Looking on the site for any vuln for the version (2.2.8)(we can get it from the index, scrolling down).  
-I found the following cve: https://www.exploit-db.com/exploits/46635  
+Looking on exploid-db for a cve to help us, we can find the cve  2019-9053, which contains the following exploit:  
+https://www.exploit-db.com/exploits/46635  
 Trying to re make it available for python3 took a time but luckily we can execute it and get the hash  
 ``` Python3 [file] -u http://simple.thm/simple --crack -w /usr/share/seclists/Passwords/Common-Credentials/best110.txt ```  
 ``` 
