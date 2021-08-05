@@ -1,0 +1,69 @@
+Room: https://tryhackme.com/room/cmspit
+
+# RECONNAISSANCE
+
+After we deployed the VM, we start with an NMAP and check the machine. Do a dirb search if it has a http port opened.  
+```sudo nmap -v -sV -sC -Pn -T4 -p- -oG nmap.log 10.10.24.213```  
+NMAP output:  
+
+
+
+From this we can check the port 80.  
+Image from the port 80:  
+
+
+After checking the source code I found the method to /auth/check and we execute dirb to this url.  
+	```<form class="uk-form" method="post" action="/auth/check" onsubmit="{ submit }">```
+Dirb command:  
+
+``` dirb http://10.10.24.213/auth/check/ /usr/share/wordlists/dirb/big.txt -f ```  
+
+Dirb output:  
+
+
+At this point we can answer the first 3 questions.  
+After some research for the CMS cockpit with that version I found the following link.  
+	https://swarm.ptsecurity.com/rce-cockpit-cms/  
+
+From here, we open BurpSuite to analyze what we can find.  
+From the site we take the following fuction to add to the request from our BurpSuite to check the answers.  
+
+```{
+	"auth":{
+	        "user":{
+	                "$func":"var_dump"
+	                },
+	        "password":[
+	                0
+	                ]
+	        },
+	"csfr":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjc2ZyIjoibG9naW4ifQ.dlnu8XjKIvB6mGfBlOgjtnixirAIsnzf5QTAEP1mJJc"} ```
+
+The output we get from this is the answer of the 4th question and reading through the site on the link we can answer the 5th one.  
+
+With this we start playing around with the path of /auth/resetpassword and /auth/newpassword  
+From here we can get the tokens when we use a dump on /resetpassword.  
+With this token we can find the user information on /newpassword.  
+With this information we can update and change the password of the user, having the reset token on /newpassword.  
+And with this we are inside the CMS.  
+
+
+Navigating through the site we can find the Web flag.  
+After this we have to upload and compromise the machine to get remote access or RCE.  
+
+# Getting the reverse Shell  
+
+After we create a php file with a simple shell we can execute commands on our machine.  
+
+We make a reverse shell to upload and have our backdoor to the machine.  
+
+Once we got in, we start checking thought the system and I I found the user.txt flag under /home/stux/  
+Checking the files there and also checking the log from mongodb (/var/log/mongodb/mongodb.log) y can get the password of Stux  
+
+With this we can get the Ssh password. And the db flag.  
+Once we got this we can get in via SSH with the Stux account.  
+
+
+# ESCALATION  
+
+Now that we have the credentials of Stux, we can check any vulnerability to use on the system to escalate privileges. For this we will use Linpeas.  
