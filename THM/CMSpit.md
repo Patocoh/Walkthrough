@@ -93,3 +93,8 @@ With this we have root.
 And we can print the last flag.  
 
 ![image](https://user-images.githubusercontent.com/71237545/128411517-4fc61a75-bd2c-42e7-bd8f-01dedeeb9c88.png)
+
+
+# Note:  
+To do the priv esc without the github tool, we can use the information from GTFOBin and get the shadow file or write the shadow file with another md5 credentials for the user root.  
+![image](https://user-images.githubusercontent.com/71237545/128412098-5cb0041a-f49c-4a12-b019-ae37e4a39325.png)  
